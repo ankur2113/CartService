@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cartservice-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: cartservice
+  template:
+    metadata:
+      labels:
+        app: cartservice
+    spec:
+      containers:
+        - name: cartservice-container
+          image: cartservice:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 9091
+
+
